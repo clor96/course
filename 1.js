@@ -1,5 +1,5 @@
 var money = +prompt('Ваш бюджет на месяц?');
-var time = +prompt('Введите дату в формате YYYY-MM-DD');
+var time =   prompt('Введите дату в формате YYYY-MM-DD');
 
 var appData = {
     budget: money,
@@ -10,9 +10,17 @@ var appData = {
     savings: false,
 };
 
-var costs = prompt("Введите обязательную статью расходов в этом месяце");
-appData.expenses[costs] = +prompt('Во сколько это обойдется?');
+for (var i = 0; i < 1; i++){
+var a =  prompt("Введите обязательную статью расходов в этом месяце"),
+    b = +prompt('Во сколько это обойдется?');
+  if ( (typeof(a) === "string") && (a != "") && (b != "") && (a.length < 50 ) && (a !== null) && (b !== null) )
+    appData.expenses[a] = b; 
+        else
+    i--;
+}
 
-var total =  Math.round( (appData.budget - appData.expenses[costs]) / 30 ) ; 
-alert("Бюджет на 1 день:" + total );
+
+appData.perDay =  Math.round( (appData.budget - appData.expenses[a]) / 30 ) ; 
+
+alert("Бюджет на 1 день:" + appData.perDay );
 
